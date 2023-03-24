@@ -120,6 +120,7 @@ forester <- function(left_side_data,
     #tdata <- dplyr::mutate_all(tdata, ~sprintf(.,
     #    fmt = paste0('%#.', estimate_precision,'f')
     #))
+    tdata <- dplyr::mutate_if(tdata, is.numeric, round, digits=estimate_precision)
 
     tdata[tdata == "NA"] <- " "
     # pretty formatting for confidence intervals
