@@ -117,9 +117,9 @@ forester <- function(left_side_data,
   if(is.null(right_side_data)){
     tdata <- gdata
 
-    tdata <- dplyr::mutate_all(tdata, ~sprintf(.,
-        fmt = paste0('%#.', estimate_precision,'f')
-    ))
+    #tdata <- dplyr::mutate_all(tdata, ~sprintf(.,
+    #    fmt = paste0('%#.', estimate_precision,'f')
+    #))
 
     tdata[tdata == "NA"] <- " "
     # pretty formatting for confidence intervals
