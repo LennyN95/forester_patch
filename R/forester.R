@@ -117,10 +117,10 @@ forester <- function(left_side_data,
   if(is.null(right_side_data)){
     tdata <- gdata
 
-    #tdata <- dplyr::mutate_all(tdata, ~sprintf(.,
-    #    fmt = paste0('%#.', estimate_precision,'f')
-    #))
-    tdata <- dplyr::mutate_if(tdata, is.numeric, round, digits=estimate_precision)
+    tdata <- dplyr::mutate_all(tdata, ~sprintf(.,
+        fmt = paste0('%#.', estimate_precision,'f')
+    ))
+    #tdata <- dplyr::mutate_if(tdata, is.numeric, round, digits=estimate_precision)
 
     tdata[tdata == "NA"] <- " "
     # pretty formatting for confidence intervals
@@ -355,19 +355,19 @@ forester <- function(left_side_data,
 
   if(x_scale_linear){
     if(is.null(xbreaks)){
-      center <- center + ggplot2::scale_x_continuous(labels = scales::number_format(accuracy = 0.1),
+      center <- center + ggplot2::scale_x_continuous(labels = scales::number_format(accuracy = 10 ** -estimate_precision),
                                             expand = c(0,0))
     }else{
-      center <- center + ggplot2::scale_x_continuous(labels = scales::number_format(accuracy = 0.1),
+      center <- center + ggplot2::scale_x_continuous(labels = scales::number_format(accuracy = 10 ** -estimate_precision),
                                             breaks = xbreaks,
                                             expand = c(0,0))
     }
   }else{
     if(is.null(xbreaks)){
-      center <- center + ggplot2::scale_x_log10(labels = scales::number_format(accuracy = 0.1),
+      center <- center + ggplot2::scale_x_log10(labels = scales::number_format(accuracy = 10 ** -estimate_precision),
                                             expand = c(0,0))
     }else{
-      center <- center + ggplot2::scale_x_log10(labels = scales::number_format(accuracy = 0.1),
+      center <- center + ggplot2::scale_x_log10(labels = scales::number_format(accuracy = 10 ** -estimate_precision),
                                             breaks = xbreaks,
                                             expand = c(0,0))
     }
